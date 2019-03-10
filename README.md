@@ -3,10 +3,10 @@ Programe that upload .txt doctionari file and check another texts in .txt for wo
 
 It uses trie data structure to upload dictionari in the RAM. And recursion to unload and free the mamory in heap.
 
-directory kays/ contains expected result of our output.
-derectory dictionaries/ contains 2 dictionaries small and large.
+directory ```kays/``` contains expected result of our output.
+derectory ```dictionaries/``` contains 2 dictionaries small and large.
 directory texts/ contains texts that we wont to check.
 
-to start the programe type: ./speller texts/text_that_you_want_to_check.txt (in that case programe will upload by default large dictionary)
+to start the programe type: ```./speller texts/text_that_you_want_to_check.txt``` (in that case programe will upload by default large dictionary)
 
-to start small dictionnary type: ./speller dictionaries/small texts/text_that_you_want_to_check.txt
+to start small dictionnary type: ```./speller dictionaries/small texts/text_that_you_want_to_check.txt```
