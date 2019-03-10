@@ -7,7 +7,7 @@ directory ```kays/``` contains expected result of our output.
 
 derectory ```dictionaries/``` contains 2 dictionaries small and large.
 
-directory texts/ contains texts that we wont to check.
+directory ```texts/``` contains texts that we wont to check.
 
 to start the programe type: ```./speller texts/text_that_you_want_to_check.txt``` (in that case programe will upload by default large dictionary)
 
