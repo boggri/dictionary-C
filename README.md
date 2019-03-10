@@ -1,5 +1,5 @@
 # dictionary-C
-Programe that upload .txt doctionari file and check another texts in .txt for words that isn't in the dictionari.
+Programe that upload .txt dictionary file and check another texts in .txt format for words that isn't in the dictionari.
 
 It uses trie data structure to upload dictionari in the RAM. And recursion to unload and free the mamory in heap.
 
