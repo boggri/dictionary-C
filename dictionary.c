@@ -77,32 +77,31 @@ bool load(const char *dictionary)
             int index = word[i] - 'a'; // index of the curent letter in the array
             int last_w = len - 1; //  index of the last latter of the word in the for loop
 
-            if (i != last_w) // if the curent letter isn't the last latter in the word do next
+            if (!(temp_ptr->children[index])) // chesk if children in curent node is NULL. If yes, then make malloc
             {
-                if (!(temp_ptr->children[index])) // chesk if children in curent node is NULL. If yes, then make malloc
+                temp_ptr->children[index] = malloc(sizeof(node)); // create new node in the heap
+                if (!(temp_ptr->children[index])) // if malloc couldn't allocate the memory
                 {
-                    temp_ptr->children[index] = malloc(sizeof(node)); // create new node in the heap
-                    if (!(temp_ptr->children[index])) // if malloc couldn't allocate the memory
-                    {
-                        fprintf(stderr, "Out of mamory\n");
-                        unload();
-                        fclose(file);
-                        size_dict = 0;
-                        return false;
-                    }
-
-                    // Initialize new node
-                    temp_ptr->children[index]->is_word = false;
-                    for (int j = 0; j < N; j++)
-                    {
-                        temp_ptr->children[index]->children[j] = NULL;
-                    }
+                    fprintf(stderr, "Out of mamory\n");
+                    unload();
+                    fclose(file);
+                    size_dict = 0;
+                    return false;
                 }
 
-                //  temp_ptr start's point to that new plase
-                temp_ptr = temp_ptr->children[index];
+                // Initialize new node
+                temp_ptr->children[index]->is_word = false;
+                for (int j = 0; j < N; j++)
+                {
+                    temp_ptr->children[index]->children[j] = NULL;
+                }
             }
-            else // if it's the last letter
+
+            //  temp_ptr start's point to that new plase
+            temp_ptr = temp_ptr->children[index];
+
+            // If it's the last letter check if it points to true node and if not make this node true
+            if (i == last_w)
             {
                 if (!(temp_ptr->is_word)) // If is_word is false, make it true
                 {
@@ -169,9 +168,15 @@ bool check(const char *word)
     // Check if the word is in the try
     for (int i = 0; i < len; i++)
     {
+        // if there is no path through - stop
+        if (!(ptr->children[tmp_word[i] - 'a']))
+        {
+            return false;
+        }
+
         if (i == last_char) // If it's the last character
         {
-            if (ptr->is_word) // Check if this word is in the try
+            if (ptr->children[tmp_word[i] - 'a']->is_word) // Check if this word is in the try
             {
                 return true;
             }
@@ -182,14 +187,7 @@ bool check(const char *word)
         }
         else // If it isn't the last character
         {
-            if (!(ptr->children[tmp_word[i] - 'a'])) // If there is no pass through - stop
-            {
-                return false;
-            }
-            else // If there is pass through - go
-            {
-                ptr = ptr->children[tmp_word[i] - 'a'];
-            }
+            ptr = ptr->children[tmp_word[i] - 'a'];
         }
     }
     return false;
