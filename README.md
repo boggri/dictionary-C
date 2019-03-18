@@ -1,5 +1,5 @@
 # dictionary-C (trie data structure)
-Programe that upload .txt dictionary file and check another texts in .txt format for words that isn't in the dictionary.
+Program that upload .txt dictionary file and check another texts in .txt format for words that isn't in the dictionary.
 
 It uses trie data structure to upload dictionary in the RAM. And recursion to unload and free the mamory in heap.
 
